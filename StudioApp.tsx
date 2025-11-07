@@ -20,17 +20,23 @@ export const StudioApp: React.FC = () => {
 
   useEffect(() => {
     // Initialize all services
-    const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
+    const geminiApiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
 
     try {
-      initMusicService(apiKey);
-      initStemService(apiKey);
-      initVoiceService(apiKey);
-      initMidiService(apiKey);
-      initMixingService(apiKey);
-      initSmartBotService(apiKey);
+      // Browser-based services (no API key needed)
+      initMusicService(); // Uses Tone.js for synthesis
+      initMidiService(geminiApiKey); // MIDI generation
 
-      console.log('AI Music Studio services initialized');
+      // AI-enhanced services (use Gemini)
+      if (geminiApiKey) {
+        initSmartBotService(geminiApiKey);
+        console.log('✓ Smart AI Bot initialized');
+      }
+
+      // Note: Stem separation, voice cloning, and advanced mixing
+      // would require additional APIs (optional features)
+
+      console.log('✓ AI Music Studio ready - music synthesis active!');
     } catch (error) {
       console.error('Failed to initialize services:', error);
     }

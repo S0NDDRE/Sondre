@@ -87,10 +87,17 @@ export const GenerationPanel: React.FC = () => {
   return (
     <div className="flex-1 overflow-y-auto p-6 bg-slate-900">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+        <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
           <Sparkles className="w-8 h-8 text-purple-400" />
           AI Music Generation
         </h1>
+
+        {/* Status Banner */}
+        <div className="mb-6 px-4 py-3 bg-green-500/10 border border-green-500/30 rounded-lg">
+          <p className="text-sm text-green-400">
+            ✓ Real-time synthesis active • Generates music instantly in your browser
+          </p>
+        </div>
 
         {/* Generation Type Selector */}
         <div className="grid grid-cols-4 gap-4 mb-6">
@@ -176,22 +183,15 @@ export const GenerationPanel: React.FC = () => {
 
         {/* Settings Grid */}
         <div className="grid grid-cols-2 gap-6 mb-6">
-          {/* AI Model */}
+          {/* Synthesis Engine */}
           <div>
             <label className="block text-sm font-medium text-slate-300 mb-2">
-              AI Model
+              Synthesis Engine
             </label>
-            <select
-              value={selectedModel}
-              onChange={(e) => setSelectedModel(e.target.value as AIModel)}
-              className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-purple-500"
-            >
-              {AI_MODELS.map((model) => (
-                <option key={model} value={model}>
-                  {model.toUpperCase()}
-                </option>
-              ))}
-            </select>
+            <div className="px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white flex items-center justify-between">
+              <span>Tone.js (Browser)</span>
+              <span className="text-xs text-green-400">● Active</span>
+            </div>
           </div>
 
           {/* Genre */}
