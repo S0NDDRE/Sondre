@@ -1,9 +1,10 @@
 /**
  * Real Music Generation Service
- * Uses browser-based synthesis with Tone.js - works immediately, no APIs required!
+ * Hybrid approach: Real AI APIs (Suno) + Fallback to Tone.js synthesis
  */
 
 import { getSynthesisEngine } from './synthesisEngine';
+import { getSunoService } from './sunoAPIService';
 import type {
   GenerationRequest,
   GeneratedTrack,
@@ -15,25 +16,52 @@ import type {
 
 export class MusicGenerationService {
   private synthesisEngine = getSynthesisEngine();
+  private useRealAPI: boolean;
 
-  constructor() {
-    // No API needed - we generate music in the browser!
+  constructor(useRealAPI: boolean = true) {
+    this.useRealAPI = useRealAPI;
   }
 
   /**
    * Generate music from text description
-   * Uses real synthesis engine with Tone.js
+   * Tries Suno API first, falls back to Tone.js synthesis
    */
   async generateFromText(request: GenerationRequest): Promise<GeneratedTrack> {
+    // Try Suno API if available and enabled
+    if (this.useRealAPI) {
+      const sunoService = getSunoService();
+
+      if (sunoService) {
+        try {
+          console.log('🎵 Generating with Suno AI API...', request);
+
+          const track = await sunoService.generateMusic({
+            prompt: request.prompt || '',
+            genre: request.genre,
+            mood: request.mood,
+            instrumental: !request.voiceType || request.voiceType === 'custom',
+            title: this.generateTitle(request),
+          });
+
+          console.log('✅ Suno AI generation successful!', track);
+          return track;
+        } catch (error) {
+          console.warn('⚠️ Suno API failed, falling back to browser synthesis:', error);
+          // Fall through to Tone.js synthesis
+        }
+      }
+    }
+
+    // Fallback: Browser-based synthesis with Tone.js
     try {
-      console.log('Generating music with real synthesis...', request);
+      console.log('🎹 Generating with Tone.js synthesis...', request);
 
       // Generate actual audio using Tone.js
       const audioBlob = await this.synthesisEngine.generateMusic({
         genre: request.genre || 'pop',
         mood: request.mood || 'happy',
         tempo: request.tempo || 120,
-        duration: Math.min(request.duration || 30, 30), // Limit to 30s for now
+        duration: Math.min(request.duration || 30, 30), // Limit to 30s for synthesis
         key: request.key || 'C',
       });
 
@@ -51,17 +79,17 @@ export class MusicGenerationService {
         key: request.key || 'C',
         genre: request.genre || 'pop',
         metadata: {
-          tags: [request.genre || 'pop', request.mood || 'happy'],
-          description: request.prompt || 'AI Generated Music',
+          tags: [request.genre || 'pop', request.mood || 'happy', 'Tone.js'],
+          description: request.prompt || 'Browser-synthesized music',
         },
         createdAt: new Date(),
       };
 
-      console.log('Music generated successfully!', track);
+      console.log('✅ Tone.js generation successful!', track);
       return track;
 
     } catch (error) {
-      console.error('Music generation error:', error);
+      console.error('❌ All generation methods failed:', error);
       throw error;
     }
   }

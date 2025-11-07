@@ -93,10 +93,30 @@ export const GenerationPanel: React.FC = () => {
         </h1>
 
         {/* Status Banner */}
-        <div className="mb-6 px-4 py-3 bg-green-500/10 border border-green-500/30 rounded-lg">
-          <p className="text-sm text-green-400">
-            ✓ Real-time synthesis active • Generates music instantly in your browser
-          </p>
+        <div className="mb-6 px-4 py-3 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30 rounded-lg">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-purple-300 font-semibold">
+                {import.meta.env.VITE_SUNO_API_KEY
+                  ? '🎵 Professional AI Generation Active'
+                  : '🎹 Browser Synthesis Active'}
+              </p>
+              <p className="text-xs text-slate-400 mt-1">
+                {import.meta.env.VITE_SUNO_API_KEY
+                  ? 'Suno AI with automatic Tone.js fallback'
+                  : 'Real-time algorithmic composition'}
+              </p>
+            </div>
+            <div className="flex gap-2">
+              {import.meta.env.VITE_SUNO_API_KEY && (
+                <span className="px-2 py-1 bg-purple-600/20 text-purple-300 text-xs rounded">Suno AI</span>
+              )}
+              {import.meta.env.VITE_ELEVENLABS_API_KEY && (
+                <span className="px-2 py-1 bg-blue-600/20 text-blue-300 text-xs rounded">ElevenLabs</span>
+              )}
+              <span className="px-2 py-1 bg-green-600/20 text-green-300 text-xs rounded">Tone.js</span>
+            </div>
+          </div>
         </div>
 
         {/* Generation Type Selector */}

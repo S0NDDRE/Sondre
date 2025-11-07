@@ -9,34 +9,64 @@ import { GenerationPanel } from './components/studio/GenerationPanel';
 import { MultitrackStudio } from './components/studio/MultitrackStudio';
 import { useMusicStore } from './store/musicStore';
 import { initMusicService } from './services/music/musicGenerationService';
-import { initStemService } from './services/audio/stemSeparationService';
-import { initVoiceService } from './services/voice/voiceService';
+import { initSunoService } from './services/music/sunoAPIService';
+import { initElevenLabsService } from './services/voice/elevenLabsService';
 import { initMidiService } from './services/midi/midiService';
-import { initMixingService } from './services/audio/mixingMasteringService';
 import { initSmartBotService } from './services/ai/smartBotService';
 
 export const StudioApp: React.FC = () => {
   const { activeTab } = useMusicStore();
 
   useEffect(() => {
-    // Initialize all services
+    // Get API keys from environment
     const geminiApiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
+    const sunoApiKey = import.meta.env.VITE_SUNO_API_KEY || '';
+    const sunoApiUrl = import.meta.env.VITE_SUNO_API_URL || '';
+    const elevenLabsApiKey = import.meta.env.VITE_ELEVENLABS_API_KEY || '';
 
     try {
-      // Browser-based services (no API key needed)
-      initMusicService(); // Uses Tone.js for synthesis
-      initMidiService(geminiApiKey); // MIDI generation
-
-      // AI-enhanced services (use Gemini)
-      if (geminiApiKey) {
-        initSmartBotService(geminiApiKey);
-        console.log('✓ Smart AI Bot initialized');
+      // Initialize Suno AI (real music generation)
+      if (sunoApiKey && sunoApiUrl) {
+        initSunoService(sunoApiKey, sunoApiUrl);
+        console.log('✅ Suno AI Music Generation initialized');
       }
 
-      // Note: Stem separation, voice cloning, and advanced mixing
-      // would require additional APIs (optional features)
+      // Initialize ElevenLabs (voice synthesis)
+      if (elevenLabsApiKey) {
+        initElevenLabsService(elevenLabsApiKey);
+        console.log('✅ ElevenLabs Voice AI initialized');
+      }
 
-      console.log('✓ AI Music Studio ready - music synthesis active!');
+      // Initialize Music Service (uses Suno if available, falls back to Tone.js)
+      initMusicService(!!sunoApiKey);
+      console.log('✅ Music Generation Service ready');
+
+      // Initialize MIDI Service
+      initMidiService(geminiApiKey);
+
+      // Initialize Smart AI Bot (uses Gemini)
+      if (geminiApiKey) {
+        initSmartBotService(geminiApiKey);
+        console.log('✅ Smart AI Bot initialized');
+      }
+
+      console.log('🎵 AI Music Studio fully initialized!');
+
+      // Log available features
+      if (sunoApiKey) {
+        console.log('  → Real AI music generation (Suno)');
+      } else {
+        console.log('  → Browser-based synthesis (Tone.js)');
+      }
+
+      if (elevenLabsApiKey) {
+        console.log('  → Professional voice synthesis (ElevenLabs)');
+      }
+
+      if (geminiApiKey) {
+        console.log('  → AI assistant and smart suggestions (Gemini)');
+      }
+
     } catch (error) {
       console.error('Failed to initialize services:', error);
     }
