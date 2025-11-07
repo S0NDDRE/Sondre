@@ -1,236 +1,222 @@
-# 🎵 AI Music Generation Studio
+# 🎨 Vannmerk Fjerner Pro
 
-A professional, full-featured AI-powered music generation and production studio built with React, TypeScript, and cutting-edge AI models.
+En AI-drevet applikasjon som fjerner vannmerker, logoer og uønskede objekter fra videoer og bilder på sekunder. Perfekt for innholdsskapere, markedsførere og studenter.
 
-![AI Music Studio](https://img.shields.io/badge/AI-Music%20Studio-purple?style=for-the-badge&logo=music)
+![Watermark Remover](https://img.shields.io/badge/AI-Watermark%20Remover-purple?style=for-the-badge&logo=image)
 ![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=for-the-badge&logo=typescript)
 
-## ✨ Features
+## ✨ Funksjoner
 
-### 🎼 Advanced AI Music Generation
+### 🖼️ AI-Drevet Vannmerkefjerning
 
-- **Text-to-Music**: Generate complete songs from simple text descriptions
-- **Lyrics-to-Song**: Transform your lyrics into full compositions with vocals and instruments
-- **Audio Extension**: Extend existing audio files to your desired length and style
-- **Sample-to-Song**: Upload audio samples and create full tracks around them
-- **Multi-Model Support**: Choose from Suno V4/V4.5/V5, Udio Allegro V1.5, and Stable Audio
+- **Automatisk Deteksjon**: AI identifiserer automatisk vannmerker, logoer og uønskede objekter
+- **Manuell Markering**: Marker selv områder du vil fjerne med presist utvalgsverktøy
+- **Video & Bilder**: Støtter både stillbilder (JPG, PNG, WEBP) og videoer (MP4, AVI, MOV)
+- **Raske Resultater**: Behandling på sekunder med avanserte inpainting-algoritmer
+- **Høy Kvalitet**: Bevarer original bildekvalitet uten synlige spor
 
-### 🎚️ Professional Multitrack Studio
+### 🤖 Smart AI-Assistent
 
-- **DAW-Style Timeline**: Drag-and-drop interface similar to Ableton Live, Logic Pro, and FL Studio
-- **Generative Stems**: AI generates new layers that automatically adapt to your existing tracks
-- **12+ Track Stem Separation**: Isolate vocals, drums, bass, guitar, piano, synth, and more
-- **Professional Controls**: Volume, pitch, tempo, pan, EQ, and effects on every track
-- **Visual Waveforms**: Advanced audio visualization with WaveSurfer.js
+- **Samtalebasert Veiledning**: Chat med AI-assistenten for trinn-for-trinn instruksjoner
+- **Norsk Språkstøtte**: Fullstendig norsk grensesnitt og AI-assistent
+- **Kontekstuell Hjælp**: Får forslag til beste teknikker for ditt spesifikke innhold
+- **Sanntids Tilbakemelding**: Umiddelbar respons og veiledning under prosessen
 
-### 🎤 Voice AI & Cloning
+### 🎯 Presist Utvalgsverktøy
 
-- **AI Vocal Synthesis**: High-quality, realistic voice generation
-- **Custom Voice Cloning**: Clone any voice from 3-60 seconds of audio
-- **Multilingual Support**: Generate vocals in multiple languages
-- **Voice-to-Instrument**: Convert humming/singing to realistic instruments
-- **Pitch Correction**: Automatic or manual vocal tuning with AI assistance
+- **Frihåndsmarkering**: Tegn nøyaktige områder med musen
+- **Rektangulært Utvalg**: Rask markering av firkantede områder
+- **Zoom & Pan**: Forstørr for presisjon på små detaljer
+- **Forhandsvisning**: Se resultat før endelig prosessering
 
-### 🎹 MIDI Generation & Export
+### 📥 Last Opp & Last Ned
 
-- **Audio-to-MIDI**: Convert audio recordings to editable MIDI
-- **Text-to-MIDI**: Generate MIDI from text descriptions
-- **MIDI Export**: Export all tracks as MIDI for use in any DAW
-- **DAW Integration**: VST/AU plugin support (planned)
+- **Dra-og-Slipp**: Enkel filopplasting med dra-og-slipp-grensesnitt
+- **Størrelsesvalidering**: Håndterer store filer opp til 100MB
+- **Flere Formater**: Eksporter i PNG, JPG, WEBP, MP4
+- **Ingen Vannmerker**: Rene, profesjonelle resultater klare for bruk
 
-### 🎛️ AI Mixing & Mastering
+## 🚀 Komme i Gang
 
-- **Auto-Mix**: AI-powered automatic mixing with professional results
-- **Smart Mastering**: Adaptive mastering for streaming, CD, vinyl, or club
-- **Audio Effects**: Reverb, delay, distortion, chorus, EQ, compression, filtering
-- **Reference Matching**: Match your mix to professional reference tracks
-- **Noise Removal**: AI-powered background noise elimination
-
-### 🤖 Smart AI Bot
-
-- **Personalized Assistant**: Learns your style preferences and production habits
-- **Production Analysis**: Analyzes your work and provides actionable insights
-- **Contextual Suggestions**: Real-time suggestions for improvements and arrangements
-- **Natural Language Commands**: Control the studio with conversational commands
-
-### 📤 Export & Commercial Use
-
-- **Multi-Format Export**: MP3, WAV (24-bit lossless), FLAC, MIDI, MP4
-- **Stem Export**: Download individual tracks for further production
-- **Royalty-Free**: All generated music is 100% free for commercial use
-- **No Watermarks**: Professional, clean exports ready for distribution
-
-## 🚀 Getting Started
-
-### Prerequisites
+### Forutsetninger
 
 - Node.js 18+
-- npm or yarn
+- npm eller yarn
 
-### Installation
+### Installasjon
 
-1. Clone the repository:
+1. Klon repositoriet:
 ```bash
-git clone https://github.com/yourusername/ai-music-studio.git
-cd ai-music-studio
+git clone https://github.com/S0NDDRE/watermark-remover-pro.git
+cd watermark-remover-pro
 ```
 
-2. Install dependencies:
+2. Installer avhengigheter:
 ```bash
 npm install
 ```
 
-3. Set up environment variables:
+3. Sett opp miljøvariabler:
 ```bash
 cp .env.local.example .env.local
 ```
 
-Edit `.env.local` and add your API keys:
+Rediger `.env.local` og legg til API-nøklene:
 ```env
 VITE_GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-4. Start the development server:
+4. Start utviklingsserveren:
 ```bash
 npm run dev
 ```
 
-5. Open your browser to `http://localhost:5173`
+5. Åpne nettleseren på `http://localhost:5173`
 
-## 🏗️ Project Structure
+## 🏗️ Prosjektstruktur
 
 ```
-ai-music-studio/
-├── components/          # React components
-│   ├── studio/         # Studio interface components
-│   ├── audio/          # Audio player and visualization
-│   └── effects/        # Audio effects UI
-├── services/           # Business logic and API integrations
-│   ├── music/          # Music generation services
-│   ├── audio/          # Audio processing services
-│   ├── voice/          # Voice AI services
-│   ├── midi/           # MIDI services
-│   └── ai/             # Smart bot services
-├── store/              # State management (Zustand)
-├── types/              # TypeScript type definitions
-├── utils/              # Utility functions
-└── lib/                # Third-party library integrations
+watermark-remover-pro/
+├── components/          # React-komponenter
+│   ├── WatermarkRemover.tsx    # Hovedkomponent
+│   ├── FileUploader.tsx        # Filopplasting
+│   ├── MediaPreview.tsx        # Forhåndsvisning
+│   ├── SelectionTool.tsx       # Utvalgsverktøy
+│   └── ChatWindow.tsx          # AI-assistent chat
+├── services/           # Forretningslogikk og API-integrasjoner
+│   ├── watermark/      # Vannmerkefjerning
+│   ├── ai/             # AI-assistenttjenester
+│   └── media/          # Medie-behandling
+├── store/              # Tilstandsadministrasjon (Zustand)
+├── types/              # TypeScript-typedefinisjoner
+└── utils/              # Hjelpefunksjoner
 ```
 
-## 🎨 Tech Stack
+## 🎨 Teknologistakk
 
 ### Frontend
-- **React 19**: Latest React with concurrent features
-- **TypeScript**: Type-safe development
-- **Tailwind CSS**: Utility-first CSS framework
-- **Framer Motion**: Smooth animations
-- **Zustand**: Lightweight state management
+- **React 19**: Nyeste React med samtidige funksjoner
+- **TypeScript**: Type-sikker utvikling
+- **Tailwind CSS**: Utility-first CSS-rammeverk
+- **Framer Motion**: Jevne animasjoner
+- **Zustand**: Lett tilstandsadministrasjon
 
-### Audio & Music
-- **WaveSurfer.js**: Advanced audio visualization
-- **Tone.js**: Web Audio framework
-- **@tonejs/midi**: MIDI processing
-- **Howler.js**: Audio playback
-- **Pizzicato.js**: Audio effects
+### Mediebehandling
+- **Canvas API**: Bildemanipulering og utvalg
+- **FFmpeg.wasm**: Videobehandling i nettleseren
+- **React Dropzone**: Dra-og-slipp filopplasting
 
 ### AI & ML
-- **Google Gemini**: AI assistant and analysis
-- **Suno AI**: Music generation
-- **Udio**: Advanced music synthesis
-- **Stable Audio**: High-quality audio generation
+- **Google Gemini**: AI-assistent og analyse
+- **Computer Vision AI**: Automatisk vannmerkedeteksjon
+- **Inpainting Algoritmer**: Intelligent objektfjerning
 
-## 📖 Usage
+## 📖 Bruksanvisning
 
-### Generating Music
+### Laste Opp Fil
 
-1. Navigate to the **Generate** tab
-2. Choose your generation type:
-   - Text to Music
-   - Lyrics to Song
-   - Extend Audio
-   - Sample to Song
-3. Select your AI model, genre, mood, and voice type
-4. Adjust tempo and duration
-5. Click **Generate Music**
+1. Klikk på **Last Opp** eller dra og slipp en fil
+2. Støttede formater:
+   - Bilder: JPG, PNG, WEBP, BMP
+   - Videoer: MP4, AVI, MOV, WEBM
+3. Maks filstørrelse: 100MB
 
-### Working in the Studio
+### Fjerne Vannmerke
 
-1. Switch to the **Studio** tab
-2. Add generated tracks to your project
-3. Arrange tracks on the timeline
-4. Adjust volume, pan, and effects
-5. Use the playback controls to preview
+**Automatisk modus:**
+1. Klikk på **Automatisk Deteksjon**
+2. AI finner og markerer vannmerker automatisk
+3. Bekreft markeringene eller juster etter behov
+4. Klikk **Fjern Vannmerke**
 
-### Separating Stems
+**Manuell modus:**
+1. Velg **Manuelt Utvalg**
+2. Klikk og dra for å markere området med vannmerket
+3. Bruk verktøyene for å justere utvalget
+4. Klikk **Fjern Vannmerke**
 
-1. Go to the **Stems** tab
-2. Upload an audio file
-3. Select the number of stems (4, 8, or 12)
-4. Wait for AI processing
-5. Download or edit individual stems
+### AI-Assistent
 
-### Exporting
+1. Åpne **Chat**-vinduet
+2. Still spørsmål på norsk eller engelsk
+3. Få trinn-for-trinn veiledning
+4. Be om tips for beste resultater
 
-1. Navigate to the **Export** tab
-2. Select your track
-3. Choose format (MP3, WAV, FLAC, MIDI)
-4. Configure quality settings
-5. Click export and download
+### Laste Ned Resultat
 
-## 🔑 API Keys
+1. Forhåndsvis det rensede bildet/videoen
+2. Velg eksportformat (PNG, JPG, WEBP, MP4)
+3. Klikk **Last Ned**
+4. Filen lagres uten vannmerker
 
-You'll need API keys for the following services:
+## 🔑 API-Nøkler
 
-- **Gemini API**: Get from [Google AI Studio](https://makersuite.google.com/app/apikey)
-- **Suno API**: Contact Suno for access
-- **Udio API**: Sign up at [Udio](https://udio.com)
-- **Stable Audio**: Get from [Stability AI](https://stability.ai)
+Du trenger API-nøkler for følgende tjenester:
 
-## 🤝 Contributing
+- **Gemini API**: Få fra [Google AI Studio](https://makersuite.google.com/app/apikey)
+- **Computer Vision API**: Valgfri for avansert automatisk deteksjon
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+## 🤝 Bidrag
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Bidrag er velkomne! Send gjerne inn en Pull Request.
 
-## 📝 License
+1. Fork repositoriet
+2. Opprett din feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit dine endringer (`git commit -m 'Legg til en fantastisk funksjon'`)
+4. Push til branchen (`git push origin feature/AmazingFeature`)
+5. Åpne en Pull Request
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 📝 Lisens
 
-## 🙏 Acknowledgments
+Dette prosjektet er lisensiert under MIT-lisensen - se [LICENSE](LICENSE)-filen for detaljer.
 
-- Suno AI for amazing music generation
-- Udio for advanced synthesis capabilities
-- Stability AI for Stable Audio
+## 🙏 Anerkjennelser
+
 - Google for Gemini AI
-- All open-source contributors
+- FFmpeg-teamet for kraftig videobehandling
+- React og TypeScript-fellesskapet
+- Alle bidragsytere til åpen kildekode
 
-## 🐛 Known Issues
+## 🐛 Kjente Problemer
 
-- Some features require active API keys and may not work without them
-- Voice cloning requires 3-60 seconds of high-quality audio
-- Large projects may require significant processing time
-- MIDI export is currently in beta
+- Noen funksjoner krever aktive API-nøkler og fungerer kanskje ikke uten dem
+- Videobehandling kan ta lengre tid for store filer
+- Automatisk deteksjon fungerer best med tydelige vannmerker
+- Komplekse vannmerker kan kreve manuell justering
 
-## 🗺️ Roadmap
+## 🗺️ Veikart
 
-- [ ] VST/AU plugin for DAW integration
-- [ ] Live performance mode
-- [ ] Collaborative editing
-- [ ] Marketplace for presets and templates
-- [ ] Video generation for music
-- [ ] Mobile app (iOS/Android)
-- [ ] Offline mode
-- [ ] Cloud storage integration
+- [ ] Støtte for batch-behandling av flere filer
+- [ ] Forbedret AI-deteksjon for komplekse vannmerker
+- [ ] Mobilapp (iOS/Android)
+- [ ] Skymalelagring og synkronisering
+- [ ] Avanserte redigeringsverktøy
+- [ ] Støtte for flere videoformater
+- [ ] API for integrasjon med andre verktøy
+- [ ] Premium-funksjoner for profesjonelle brukere
 
-## 📧 Contact
+## 💡 Brukstilfeller
 
-For questions, suggestions, or issues, please open an issue on GitHub.
+### 📹 Innholdsskapere
+- Fjern vannmerker fra stock-bilder for presentasjoner
+- Rens videomateriale før redigering
+- Forbered innhold for publisering på sosiale medier
+
+### 📊 Markedsførere
+- Gjenbruk visuelt innhold for kampanjer
+- Rens produktbilder for markedsføringsmateriell
+- Forbered presentasjoner uten distraksjoner
+
+### 🎓 Studenter
+- Rens skjermbilder for akademiske presentasjoner
+- Forbered videomateriale for forskningsprosjekter
+- Fjern distraherende elementer fra læremateriale
+
+## 📧 Kontakt
+
+For spørsmål, forslag eller problemer, vennligst åpne en issue på GitHub.
 
 ---
 
-Made with ❤️ by the AI Music Studio Team
+Laget med ❤️ av Vannmerk Fjerner Pro-teamet
