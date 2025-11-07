@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { StudioApp } from './StudioApp';
+import WatermarkRemover from './components/WatermarkRemover';
 import './index.css';
 
 const rootElement = document.getElementById('root');
@@ -12,7 +12,7 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <StudioApp />
+    <WatermarkRemover />
   </React.StrictMode>
 );
    
